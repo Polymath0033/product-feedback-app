@@ -1,0 +1,19 @@
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.column h1 {
+    font-size: 1.125rem;
+    color: var(--bold);
+    text-transform: capitalize;
+}
+
+.column p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--paragraph);
+    margin-top: -1rem;
+}

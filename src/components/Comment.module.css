@@ -1,0 +1,93 @@
+.comment__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment__list_li {
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(58, 67, 116, 0.15);
+  padding: 2rem 1rem 2rem 1rem;
+}
+
+.comment__list_li:first-of-type {
+  padding-top: 1rem;
+}
+
+.comment__list_li:last-of-type {
+  border-bottom: none;
+}
+
+.comment__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.comment__list img {
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(58, 67, 116, 0.15);
+  width: 1px;
+  height: calc(100% - 18.5rem);
+  margin-left: 1.25rem;
+  margin-top: 3.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.name {
+  display: flex;
+  gap: 0.1rem;
+  flex-direction: column;
+}
+
+.name h4 {
+  color: var(--bold);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: -0.0123rem;
+}
+
+.name p {
+  color: var(--paragraph);
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-top: -0.3rem;
+}
+
+.header button {
+  all: unset;
+  cursor: pointer;
+  color: var(--blue);
+  font-size: 0.8125rem;
+  font-weight: bold;
+  font-weight: 600;
+}
+
+.header button:hover {
+  text-decoration: underline;
+}
+
+.paragraph {
+  color: var(--paragraph);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  word-wrap: break-word;
+}

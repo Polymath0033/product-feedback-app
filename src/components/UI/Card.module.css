@@ -1,0 +1,75 @@
+.card {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 0.3125rem;
+  padding: 1rem;
+  border-width: 0.3125rem;
+  border-style: solid none none none;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.card:first-of-type {
+  margin-top: 1rem;
+}
+
+.status {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--paragraph);
+  text-transform: capitalize;
+}
+
+.status i {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.card h1 {
+  color: var(--bold);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.last {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feature {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--gray);
+  border-radius: 10px;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.feature:hover {
+  background-color: var(--hover);
+}
+
+.active {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.last span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bold);
+}

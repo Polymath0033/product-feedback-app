@@ -1,0 +1,17 @@
+.li {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(55, 63, 104, 0.35);
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.li:hover {
+  color: var(--purple);
+}
+
+.li:last-of-type {
+  border-bottom: none;
+}

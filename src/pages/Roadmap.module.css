@@ -1,0 +1,35 @@
+.roadmap {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  /* margin: 0 4rem; */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--header-bg);
+  border-radius: 0.625rem;
+  color: #fff;
+  align-items: center;
+}
+
+.left h2 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.roadmap header button {
+  color: #fff !important;
+}
+
+.roadmap header button path {
+  stroke: #fff;
+}
+
+.main {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}

@@ -1,0 +1,17 @@
+.back {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--paragraph);
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.back:hover {
+  text-decoration: underline;
+}

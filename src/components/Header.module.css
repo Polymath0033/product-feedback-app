@@ -1,0 +1,48 @@
+.header {
+  background-color: var(--header-bg);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.left,
+.left div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.left div {
+  position: relative;
+  align-items: baseline;
+}
+
+.left h1 {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+}
+
+.left p {
+  color: var(--gray);
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.left span {
+  color: var(--gray);
+  text-transform: capitalize;
+  opacity: 0.9;
+}
+
+.left div {
+  gap: 0.4rem;
+}
+
+.left div i {
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
+}

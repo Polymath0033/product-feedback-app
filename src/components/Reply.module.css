@@ -1,0 +1,56 @@
+.replies {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.replies li {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem 1rem 2rem 1rem;
+}
+
+.reply-form {
+  display: flex;
+  width: 100%;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.reply-form textarea {
+  width: 80%;
+  border-radius: 0.3125rem;
+  border: 1px solid rgba(58, 67, 116, 0.15);
+  background-color: var(--bg-color);
+  padding: 0.5rem;
+  color: var(--paragraph);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  height: 80px;
+}
+
+.reply-form textarea:focus {
+  border: 1px solid var(--blue);
+  outline: none;
+}
+
+.replying-to {
+  color: var(--purple);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  margin-right: 0.2rem;
+}
+
+.reply-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  color: #fff;
+  background-color: var(--purple);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  cursor: pointer;
+}

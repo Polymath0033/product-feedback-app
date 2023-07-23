@@ -1,0 +1,12 @@
+.layout {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .layout {
+    padding: 2rem;
+  }
+}

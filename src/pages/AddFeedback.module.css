@@ -1,0 +1,166 @@
+.main {
+  margin: 0 auto;
+  margin-top: -1.5rem;
+}
+
+.main section {
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  margin-top: 3rem;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
+}
+
+.main img {
+  position: absolute;
+  top: -22.5px;
+  left: 1.5rem;
+  height: 45px;
+  width: 45px;
+}
+
+.section h1 {
+  color: var(--bold);
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-control {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.form-control label {
+  text-transform: capitalize;
+  color: var(--bold);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.form-control input,
+.form-control textarea {
+  background-color: var(--bg-color);
+  border: none;
+  border-radius: 0.3125rem;
+  display: flex;
+  padding: 0.5rem;
+  color: var(--paragraph);
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+  border: 1px solid var(--blue);
+  outline: none;
+}
+
+.form-control textarea {
+  height: 60px;
+}
+
+.form-control span {
+  color: var(--paragraph);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.feature {
+  all: unset;
+  position: relative;
+  display: flex;
+  padding: 0.5rem;
+  background-color: var(--bg-color);
+  justify-content: space-between;
+  align-items: center;
+  color: var(--paragraph);
+  font-size: 0.875rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.feature:hover {
+  border: 1px solid var(--bold);
+  border-radius: 0.3125rem;
+}
+
+.feature ul {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  list-style: none;
+  border-radius: 0.625rem;
+  background-color: #fff;
+  margin-top: 1rem;
+  left: 0;
+  box-shadow: 0px 5px 20px -7px rgba(55, 63, 104, 0.35);
+  z-index: 10;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.button button {
+  border: none;
+  border-radius: 0.625rem;
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #fff;
+  background-color: #656ea3;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button button:last-of-type,
+.edit-bottom button:last-of-type {
+  background-color: var(--purple);
+}
+
+.error {
+  color: var(--error);
+}
+
+.edit-bottom,
+.edit-bottom div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.edit-bottom button {
+  display: flex;
+  text-transform: capitalize;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 0.625rem;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.edit-bottom button:hover {
+  opacity: 0.8;
+}
+
+.edit-bottom button:first-of-type {
+  background-color: var(--error);
+}
+
+.edit-bottom div button:first-of-type {
+  background-color: var(--bold);
+}
