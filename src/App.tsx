@@ -6,6 +6,7 @@ import AddFeedback from "./pages/AddFeedback";
 import "./App.css";
 import EditFeedback from "./pages/EditFeedback";
 import Roadmap from "./pages/Roadmap";
+import { modifiedLink } from "./lib/link-helper";
 function App() {
   const routes = createBrowserRouter([
     {
@@ -17,7 +18,7 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/detail/:feedback",
+          path: `/detail/:${modifiedLink("feedback")}`,
           element: <Feedback />,
           errorElement: <h1>Error</h1>,
         },

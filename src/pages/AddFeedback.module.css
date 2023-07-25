@@ -164,3 +164,24 @@
 .edit-bottom div button:first-of-type {
   background-color: var(--bold);
 }
+
+@media screen and (max-width: 520px) {
+  .edit-bottom,
+  .button,
+  .edit-bottom div {
+    flex-direction: column;
+  }
+  .button button:first-of-type {
+    order: 2;
+  }
+  .edit-bottom button:first-of-type {
+    order: 2;
+  }
+  .edit-bottom button,
+  .edit-bottom * button {
+    justify-content: center;
+  }
+  .main button[role="link"] {
+    margin-top: 2rem !important;
+  }
+}

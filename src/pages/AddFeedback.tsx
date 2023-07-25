@@ -37,6 +37,11 @@ const AddFeedback: React.FC = () => {
     }
     return true;
   };
+  const cancelHandler = () => {
+    setTitle({ val: "", isValid: false });
+    setValue("Feature");
+    setDetail({ val: "", isValid: false });
+  };
   const submitHandler: (e: React.FormEvent) => void = (e) => {
     e.preventDefault();
 
@@ -115,7 +120,9 @@ const AddFeedback: React.FC = () => {
             ></textarea>
           </div>
           <div className={classes.button}>
-            <button type="reset">Cancel</button>
+            <button type="reset" onClick={cancelHandler}>
+              Cancel
+            </button>
             <button type="submit">Add feedback</button>
           </div>
         </form>

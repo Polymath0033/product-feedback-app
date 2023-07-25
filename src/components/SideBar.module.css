@@ -135,6 +135,17 @@ aside,
   font-size: 1rem;
 }
 
+.backdrop {
+  position: fixed;
+  top: 94px;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.5;
+  height: calc(100vh - 94px);
+  z-index: 20;
+  left: 0;
+}
+
 @media screen and (max-width: 768px) {
   aside,
   .subside {
@@ -149,7 +160,8 @@ aside,
   .bg {
     height: auto;
   }
-  aside div {
+  .group,
+  .list {
     padding: 1rem;
   }
 }
@@ -169,6 +181,7 @@ aside,
     flex-direction: row;
     height: 40px;
     align-items: center;
+    z-index: 10000;
   }
   .bg button {
     all: unset;
@@ -182,5 +195,16 @@ aside,
     z-index: 100;
     top: 94px;
     flex-direction: column;
+    z-index: 30;
+    right: 0;
+    background-color: var(--bg-color);
+    height: calc(100vh - 94px);
+    width: 75%;
+    padding-top: 2rem;
+  }
+  .group,
+  .list {
+    width: calc(100% - 4rem);
+    margin: 0 auto;
   }
 }

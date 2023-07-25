@@ -49,3 +49,11 @@
     flex-direction: column;
   }
 }
+
+@media screen and (max-width: 520px) {
+  .ul,
+  .empty {
+    position: relative;
+    top: 150px;
+  }
+}

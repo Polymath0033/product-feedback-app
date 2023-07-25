@@ -15,6 +15,29 @@
   align-items: center;
 }
 
+.subheader {
+  display: none;
+  list-style: none;
+  position: fixed;
+  top: 92px;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  border-bottom: 0.0625rem solid #8c92b3;
+  background-color: inherit;
+}
+
+.subheader li {
+  width: 100%;
+  text-align: center;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--paragraph);
+  text-transform: capitalize;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
 .left h2 {
   font-size: 1rem;
   font-weight: 700;
@@ -28,8 +51,35 @@
   stroke: #fff;
 }
 
+.active {
+  border-bottom: 5px solid var(--purple);
+}
+
 .main {
   display: flex;
   gap: 1.5rem;
   margin-top: 2rem;
+}
+
+@media screen and (max-width: 520px) {
+  .header {
+    border-radius: 0;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 1rem;
+  }
+  .header a {
+    margin-right: 2.5rem !important;
+  }
+  .subheader {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .main {
+    position: relative;
+    top: 150px;
+  }
 }

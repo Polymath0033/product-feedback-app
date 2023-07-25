@@ -2,12 +2,35 @@ import React, { ReactNode } from "react";
 import jsonData from "../lib/data.json";
 const product = jsonData.productRequests;
 import { Comment_, ProductRequest, Reply_ } from "../types/Data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductContext from "./product-context";
 const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [data, setData] = useState<ProductRequest[]>(product);
   const [type, setType] = useState("");
   const [sort, setSort] = useState("");
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const mobileQuery = matchMedia("(max-width:520px)");
+    setMobile(mobileQuery.matches);
+    const mobileChange = (event: MediaQueryListEvent) => {
+      setMobile(event.matches);
+    };
+    mobileQuery.addListener(mobileChange);
+    return () => {
+      mobileQuery.removeListener(mobileChange);
+    };
+  }, []);
+  useEffect(() => {
+    const mobileQuery = matchMedia("(max-width:520px)");
+    setMobile(mobileQuery.matches);
+    const mobileChange = (event: MediaQueryListEvent) => {
+      setMobile(event.matches);
+    };
+    mobileQuery.addListener(mobileChange);
+    return () => {
+      mobileQuery.removeListener(mobileChange);
+    };
+  }, []);
   const typeHandler: (type_: string) => void = (type_) => {
     setType(type_);
   };
@@ -149,6 +172,7 @@ const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     sortHandler,
     editFeedback,
     deleteFeedback,
+    mobile,
   };
   return (
     <ProductContext.Provider value={productContext}>

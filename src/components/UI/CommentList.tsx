@@ -1,5 +1,4 @@
 import classes from "../Comment.module.css";
-import useImage from "../../hooks/use-image";
 import { Reply_ } from "../../types/Data";
 import Reply from "../Reply";
 import { useState, useContext } from "react";
@@ -7,6 +6,7 @@ import { useParams } from "react-router-dom";
 import ProductContext from "../../store/product-context";
 import ReplyInput from "../ReplyInpt";
 import json from "../../lib/data.json";
+import { modifiedImage } from "../../lib/image-helper";
 const { currentUser } = json;
 const CommentList: React.FC<{
   id: string | number;
@@ -16,7 +16,6 @@ const CommentList: React.FC<{
   content: string;
   replies?: Reply_[];
 }> = ({ name, username, image, content, replies, id }) => {
-  const image_ = useImage();
   const title_ = useParams();
   const prodCtx = useContext(ProductContext);
   const filterData = prodCtx.data.find(
@@ -43,29 +42,33 @@ const CommentList: React.FC<{
 
   return (
     <li className={classes.comment__list_li}>
-      <div className={classes["image-wrapper"]}>
-        <img src={image_.image(image)} alt={username} />
-      </div>
-      <div className={classes.comment__container}>
-        <div className={classes.header}>
+      <div className={classes["mobile-top"]}>
+        <div className={classes.left__}>
+          <img src={modifiedImage(image)} alt={username} />
           <div className={classes.name}>
             <h4>{name}</h4>
             <p>@{username}</p>
           </div>
-          <button type="button" onClick={toggleHandler}>
-            Reply
-          </button>
         </div>
-        <p className={classes.paragraph}>{content}</p>
-        <Reply replies={replies} title={filterData?.title} id={id} />
-        {toggleReply && (
-          <ReplyInput
-            onChange={changeHandler}
-            formInput={formInput}
-            toggleHandler={toggleHandler}
-            addReply={submitHandler}
-          />
-        )}
+        <button type="button" onClick={toggleHandler}>
+          Reply
+        </button>
+      </div>
+      <div className={classes.down}>
+        <div className={classes.div_1}></div>
+        <div className={classes.para_graph}>
+          <p className={classes.paragraph}>{content}</p>
+          <Reply replies={replies} title={filterData?.title} id={id} />
+          {toggleReply && (
+            <ReplyInput
+              onChange={changeHandler}
+              formInput={formInput}
+              toggleHandler={toggleHandler}
+              addReply={submitHandler}
+            />
+          )}
+        </div>
+        <div className={classes.div_3}></div>
       </div>
     </li>
   );

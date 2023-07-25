@@ -8,6 +8,7 @@ import ListDropdown from "../components/UI/ListDropdown";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ProductContext from "../store/product-context";
+import { modifiedLink } from "../lib/link-helper";
 type Action = { type: "feature" } | { type: "roadmap" } | { type: "" };
 interface InitialState {
   feature: boolean;
@@ -27,7 +28,9 @@ const reducer: Reducer<InitialState, Action> = (state, action) => {
 const EditFeedback: React.FC = () => {
   const params = useParams();
   const prodCtx = useContext(ProductContext);
-  const filter = prodCtx.data.filter(({ title }) => title === params.edit);
+  const filter = prodCtx.data.filter(
+    ({ title }) => modifiedLink(title) === params.edit
+  );
   let value_ = "";
   let status_ = "";
   let title_ = "";
@@ -46,14 +49,24 @@ const EditFeedback: React.FC = () => {
   const [description, setDescription] = useState(description_);
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const featureDropdown = () => {
+    dispatch({ type: "feature" });
+  };
   const categoryHandler: (val: string) => void = (val) => {
     setValue(val);
+    featureDropdown();
     dispatch({ type: "feature" });
+  };
+  const roadmapDropdown = () => {
+    dispatch({ type: "roadmap" });
   };
   const statusHandler: (val: string) => void = (val) => {
     setStatus(val);
+    roadmapDropdown();
     dispatch({ type: "roadmap" });
   };
+
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     const payload: {
@@ -63,7 +76,7 @@ const EditFeedback: React.FC = () => {
       id: string | number;
     } = {
       title: title,
-      status: status,
+      status: status.toLowerCase(),
       description: description,
       id: id,
     };
@@ -107,7 +120,7 @@ const EditFeedback: React.FC = () => {
               <button
                 className={classes.feature}
                 type="button"
-                onClick={() => dispatch({ type: "feature" })}
+                onClick={featureDropdown}
                 title="category"
               >
                 {value}
@@ -120,7 +133,7 @@ const EditFeedback: React.FC = () => {
                   <ArrowUp />
                 </i>
                 {state.feature === true && (
-                  <Backdrop onClick={() => dispatch({ type: "feature" })} />
+                  <Backdrop onClick={() => featureDropdown} />
                 )}
                 {state.feature && (
                   <ul role="listbox" title="category">
@@ -139,7 +152,7 @@ const EditFeedback: React.FC = () => {
               <button
                 className={classes.feature}
                 type="button"
-                onClick={() => dispatch({ type: "roadmap" })}
+                onClick={roadmapDropdown}
                 title="status"
               >
                 {status}
@@ -152,7 +165,7 @@ const EditFeedback: React.FC = () => {
                   <ArrowUp />
                 </i>
                 {state.roadmap === true && (
-                  <Backdrop onClick={() => dispatch({ type: "roadmap" })} />
+                  <Backdrop onClick={() => roadmapDropdown} />
                 )}
                 {state.roadmap && (
                   <ul role="listbox" title="status">

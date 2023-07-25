@@ -2,8 +2,14 @@ import classes from "./SideBar.module.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import ProductContext from "../store/product-context";
-const Subside: React.FC = () => {
+const Subside: React.FC<{ onClick?: () => void }> = ({ onClick }) => {
   const prodCtx = useContext(ProductContext);
+  const typeHandler = (arr: string) => {
+    prodCtx.typeHandler(arr.toLowerCase());
+    if (onClick !== undefined) {
+      onClick();
+    }
+  };
   return (
     <>
       <div className={classes.group}>
@@ -12,7 +18,7 @@ const Subside: React.FC = () => {
             type="button"
             key={arr}
             className={prodCtx.type === arr.toLowerCase() ? classes.active : ""}
-            onClick={() => prodCtx.typeHandler(arr.toLowerCase())}
+            onClick={() => typeHandler(arr)}
           >
             {arr}
           </button>

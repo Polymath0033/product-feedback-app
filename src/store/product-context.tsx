@@ -24,12 +24,14 @@ type Context = {
     }
   ) => void;
   deleteFeedback: (title_: string | undefined) => void;
+  mobile: boolean;
 };
 const ProductContext = React.createContext<Context>({
   data: [],
   filterData: [],
   type: "",
   sort: "",
+  mobile: false,
   addFeedback: () => {},
   addComment: () => {},
   addReply: () => {},

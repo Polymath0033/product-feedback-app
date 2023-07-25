@@ -3,6 +3,7 @@ import ArrowUp from "../icons/ArrowUp";
 import CommentIcon from "../icons/Comment";
 import type { Comment_ } from "../../types/Data";
 import { Link } from "react-router-dom";
+import { modifiedLink } from "../../lib/link-helper";
 const List: React.FC<{
   title: string;
   category: string;
@@ -13,7 +14,7 @@ const List: React.FC<{
 }> = ({ title, category, description, upvotes, comments, id }) => {
   return (
     <>
-      <Link to={`/detail/${title}`} className={classes.li}>
+      <Link to={`/detail/${modifiedLink(title)}`} className={classes.li}>
         <div className={classes.left_}>
           <button className={classes.button}>
             <ArrowUp />

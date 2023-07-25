@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { useState, useContext } from "react";
 import data from "../lib/data.json";
 import ProductContext from "../store/product-context";
+import { modifiedLink } from "../lib/link-helper";
 const data_ = data;
 const Feedback: React.FC = () => {
   const user: User = data_.currentUser;
@@ -21,7 +22,7 @@ const Feedback: React.FC = () => {
   const title = params.feedback;
 
   const filter = productCtx.data.filter(
-    ({ title }) => title === params.feedback
+    ({ title }) => modifiedLink(title) === params.feedback
   );
   const maxChar = 250;
   const handleComment = (e: React.KeyboardEvent) => {

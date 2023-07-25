@@ -1,25 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import classes from "./SideBar.module.css";
 import tab from "../assets/shared/mobile/icon-hamburger.svg";
+import cancel from "../assets/shared/mobile/icon-close.svg";
 import Subside from "./Subside";
-import Backdrop from "./UI/Backdrop";
+import ProductContext from "../store/product-context";
 const SideBar: React.FC = () => {
-  const [mobile, setMobile] = useState(false);
-  const [show, setShow] = useState<boolean>(true);
+  const [show, setShow] = useState<boolean>(false);
   const tabHandler = () => {
-    setShow(!tab);
+    setShow(!show);
+    console.log(show);
   };
-  useEffect(() => {
-    const mobileQuery = matchMedia("(max-width:520px)");
-    setMobile(mobileQuery.matches);
-    const mobileChange = (event: MediaQueryListEvent) => {
-      setMobile(event.matches);
-    };
-    mobileQuery.addListener(mobileChange);
-    return () => {
-      mobileQuery.removeListener(mobileChange);
-    };
-  }, []);
+  const prodCtx = useContext(ProductContext);
   return (
     <aside>
       <div className={classes.bg}>
@@ -27,19 +18,27 @@ const SideBar: React.FC = () => {
           <h3>Frontend Mentor</h3>
           <p>Feedback board</p>
         </div>
-        <button type="button" role="button">
-          <img src={tab} alt="tab" />
+        <button type="button" role="button" onClick={tabHandler}>
+          <img
+            src={show ? cancel : tab}
+            alt={show ? "close-icon" : "hamburger-icon"}
+          />
         </button>
       </div>
-      {mobile ? (
-        <div className={classes.subside}>
-          {show && <Backdrop onClick={tabHandler} />}
-          <Subside />
-        </div>
+      {prodCtx.mobile ? (
+        <>
+          {show && (
+            <div className={classes.backdrop} onClick={tabHandler}></div>
+          )}
+          {show && (
+            <div className={classes.subside}>
+              <Subside onClick={tabHandler} />
+            </div>
+          )}
+        </>
       ) : (
         <Subside />
       )}
-      {/* <Subside /> */}
     </aside>
   );
 };
