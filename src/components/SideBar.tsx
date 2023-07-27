@@ -8,7 +8,6 @@ const SideBar: React.FC = () => {
   const [show, setShow] = useState<boolean>(false);
   const tabHandler = () => {
     setShow(!show);
-    console.log(show);
   };
   const prodCtx = useContext(ProductContext);
   return (

@@ -19,11 +19,13 @@ const Feedback: React.FC = () => {
     isValid: false,
   });
   const params = useParams();
-  const title = params.feedback;
-
   const filter = productCtx.data.filter(
     ({ title }) => modifiedLink(title) === params.feedback
   );
+  const findData = productCtx.data.find(
+    ({ title }) => modifiedLink(title) === params.feedback
+  );
+
   const maxChar = 250;
   const handleComment = (e: React.KeyboardEvent) => {
     const textarea = e.target as HTMLTextAreaElement;
@@ -38,13 +40,17 @@ const Feedback: React.FC = () => {
   };
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    if (comment.val == "") {
+      setComment({ ...comment, isValid: true });
+      return;
+    }
     const payload: Comment_ = {
       id: new Date().toISOString(),
       content: comment.val,
       user: user,
     };
-    productCtx.addComment(title, payload);
-    console.log(filter);
+    productCtx.addComment(findData?.title, payload);
+    setComment({ val: "", isValid: false });
   };
   return (
     <div className={classes.container}>

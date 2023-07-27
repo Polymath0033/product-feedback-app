@@ -7,6 +7,7 @@ import ProductContext from "../../store/product-context";
 import ReplyInput from "../ReplyInpt";
 import json from "../../lib/data.json";
 import { modifiedImage } from "../../lib/image-helper";
+import { modifiedLink } from "../../lib/link-helper";
 const { currentUser } = json;
 const CommentList: React.FC<{
   id: string | number;
@@ -19,7 +20,7 @@ const CommentList: React.FC<{
   const title_ = useParams();
   const prodCtx = useContext(ProductContext);
   const filterData = prodCtx.data.find(
-    ({ title }) => title === title_.feedback
+    ({ title }) => modifiedLink(title) === title_.feedback
   );
   const [toggleReply, setToggleReply] = useState<boolean>(false);
   const toggleHandler = () => {
@@ -55,7 +56,7 @@ const CommentList: React.FC<{
         </button>
       </div>
       <div className={classes.down}>
-        <div className={classes.div_1}></div>
+        <div className={classes["comment-div1"]}></div>
         <div className={classes.para_graph}>
           <p className={classes.paragraph}>{content}</p>
           <Reply replies={replies} title={filterData?.title} id={id} />

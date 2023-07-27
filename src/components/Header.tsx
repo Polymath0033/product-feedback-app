@@ -18,9 +18,6 @@ const Header: React.FC<{
     setHeader(value);
     dropdownHandler();
   };
-  const string = "Hello./;|}{}(!`)+=-20 world";
-  const stringWIthoutCaption = string.replace(/[^\w\s]|_/g, "");
-  console.log(stringWIthoutCaption.split(" ").join("-"));
   return (
     <>
       <header className={classes.header}>

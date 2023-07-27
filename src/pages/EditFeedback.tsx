@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ProductContext from "../store/product-context";
 import { modifiedLink } from "../lib/link-helper";
+let formIsValid = false;
 type Action = { type: "feature" } | { type: "roadmap" } | { type: "" };
 interface InitialState {
   feature: boolean;
@@ -45,8 +46,14 @@ const EditFeedback: React.FC = () => {
   }
   const [value, setValue] = useState<string>(value_);
   const [status, setStatus] = useState<string>(status_);
-  const [title, setTitle] = useState<string>(title_);
-  const [description, setDescription] = useState(description_);
+  const [title, setTitle] = useState<{ val: string; isValid: boolean }>({
+    val: title_,
+    isValid: false,
+  });
+  const [description, setDescription] = useState<{
+    val: string;
+    isValid: boolean;
+  }>({ val: description_, isValid: false });
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -66,18 +73,32 @@ const EditFeedback: React.FC = () => {
     roadmapDropdown();
     dispatch({ type: "roadmap" });
   };
-
+  const validateForm = () => {
+    if (title.val === "") {
+      setTitle({ ...title, isValid: true });
+      return false;
+    }
+    if (description.val === "") {
+      setDescription({ ...description, isValid: true });
+      return false;
+    }
+    return true;
+  };
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) {
+      formIsValid = true;
+      return;
+    }
     const payload: {
       title: string;
       status: string;
       description: string;
       id: string | number;
     } = {
-      title: title,
+      title: title.val,
       status: status.toLowerCase(),
-      description: description,
+      description: description.val,
       id: id,
     };
     console.log(payload);
@@ -86,9 +107,9 @@ const EditFeedback: React.FC = () => {
     console.log(prodCtx.data);
   };
   const cancelHandler = () => {
-    setTitle(title_);
+    setTitle({ val: title_, isValid: false });
     setStatus(status_);
-    setDescription(description_);
+    setDescription({ val: description_, isValid: false });
     setValue(value_);
   };
   const deleteHandler = () => {
@@ -101,17 +122,18 @@ const EditFeedback: React.FC = () => {
       {filter.map((edit_) => (
         <section className={classes.section} key={edit_.id}>
           <img src={edit} alt="edit" />
-          <h1>{title}</h1>
+          <h1>{title.val}</h1>
           <form onSubmit={(e) => submitHandler(e)}>
             <div className={classes["form-control"]}>
               <label htmlFor="title">Feed title</label>
               <span>Add a short, descriptive headline</span>
               <input
                 type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={title.val}
+                onChange={(e) => setTitle({ ...title, val: e.target.value })}
                 name="title"
                 title="title"
+                className={title.isValid === true ? classes.invalid : ""}
               />
             </div>
             <div className={classes["form-control"]}>
@@ -187,9 +209,17 @@ const EditFeedback: React.FC = () => {
               <textarea
                 title="detail"
                 name="detail"
-                onChange={(e) => setDescription(e.target.value)}
-                value={description}
+                onChange={(e) =>
+                  setDescription({ ...description, val: e.target.value })
+                }
+                value={description.val}
+                className={description.isValid === true ? classes.invalid : ""}
               ></textarea>
+              {description.isValid === true ? (
+                <span className={classes["invalid-span"]}>Can't be empty</span>
+              ) : (
+                ""
+              )}
             </div>
             <div className={classes["edit-bottom"]}>
               <button type="button" onClick={deleteHandler}>

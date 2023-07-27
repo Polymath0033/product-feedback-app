@@ -2,6 +2,7 @@ import classes from "./Card.module.css";
 import ArrowUp from "../icons/ArrowUp";
 import Comment from "../icons/Comment";
 import { Link } from "react-router-dom";
+import { modifiedLink } from "../../lib/link-helper";
 const Card: React.FC<{
   title: string;
   status: string;
@@ -21,7 +22,7 @@ const Card: React.FC<{
 
   return (
     <Link
-      to={`/detail/${title}`}
+      to={`/detail/${modifiedLink(title)}`}
       className={classes.card}
       style={{
         borderColor: style,

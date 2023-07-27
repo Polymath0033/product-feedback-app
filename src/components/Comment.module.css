@@ -33,18 +33,17 @@
   height: 2.5rem;
 }
 
-.image-wrapper {
+.comment-div1 {
   position: relative;
 }
 
-.image-wrapper::before {
+.comment-div1::before {
   content: "";
   position: absolute;
   background-color: rgba(58, 67, 116, 0.15);
   width: 1px;
-  height: calc(100% - 18.5rem);
+  height: calc(100% - 6.5rem);
   margin-left: 1.25rem;
-  margin-top: 3.5rem;
 }
 
 .header {
@@ -58,7 +57,8 @@
   gap: 0.5rem;
 }
 
-.div_1 {
+.div_1,
+.comment-div1 {
   width: 40px;
 }
 
@@ -109,6 +109,7 @@
   font-size: 0.9375rem;
   font-weight: 400;
   word-wrap: break-word;
+  position: relative;
 }
 
 .mobile-top {
@@ -129,7 +130,19 @@
   .name p {
     margin-top: 0;
   }
-  .div_1 {
+  .div_1,
+  .comment-div1 {
     display: none;
+  }
+  .line {
+    position: relative;
+  }
+  .line::before {
+    content: "";
+    position: absolute;
+    background-color: rgba(58, 67, 116, 0.15);
+    width: 1px;
+    height: calc(100% - 5.5rem);
+    margin-left: 1.25rem;
   }
 }

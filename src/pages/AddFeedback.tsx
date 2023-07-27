@@ -27,12 +27,14 @@ const AddFeedback: React.FC = () => {
     setDropdown(!dropdown);
   };
   const validateForm = () => {
-    if (title.val.length !== 0) {
+    if (title.val === "") {
       setTitle({ ...title, isValid: true });
       return false;
     }
     if (detail.val.length < 10) {
       setDetail({ ...detail, isValid: true });
+      console.log(detail.val.length);
+      console.log(detail.isValid);
       return false;
     }
     return true;
@@ -44,11 +46,10 @@ const AddFeedback: React.FC = () => {
   };
   const submitHandler: (e: React.FormEvent) => void = (e) => {
     e.preventDefault();
-
-    // if (!validateForm()) {
-    //   formIsValid = true;
-    //   return;
-    // }
+    if (!validateForm()) {
+      formIsValid = true;
+      return;
+    }
     const payload: ProductRequest = {
       id: new Date().toISOString(),
       upvotes: 0,
@@ -58,7 +59,6 @@ const AddFeedback: React.FC = () => {
       status: "suggestion",
     };
     productCtx.addFeedback(payload);
-
     navigate("/");
   };
   return (
@@ -77,6 +77,7 @@ const AddFeedback: React.FC = () => {
               title="title"
               value={title.val}
               onChange={(e) => setTitle({ ...title, val: e.target.value })}
+              className={title.isValid === true ? classes.invalid : ""}
             />
           </div>
           <div className={classes["form-control"]}>
@@ -117,7 +118,13 @@ const AddFeedback: React.FC = () => {
               value={detail.val}
               onChange={(e) => setDetail({ ...detail, val: e.target.value })}
               name="detail"
+              className={detail.isValid === true ? classes.invalid : ""}
             ></textarea>
+            {detail.isValid === true ? (
+              <span className={classes["invalid-span"]}>Can't be empty</span>
+            ) : (
+              ""
+            )}
           </div>
           <div className={classes.button}>
             <button type="reset" onClick={cancelHandler}>
