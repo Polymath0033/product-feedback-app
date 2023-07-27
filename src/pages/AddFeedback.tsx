@@ -44,6 +44,7 @@ const AddFeedback: React.FC = () => {
     setValue("Feature");
     setDetail({ val: "", isValid: false });
   };
+  console.log(formIsValid)
   const submitHandler: (e: React.FormEvent) => void = (e) => {
     e.preventDefault();
     if (!validateForm()) {

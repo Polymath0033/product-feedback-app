@@ -24,7 +24,7 @@ const CommentList: React.FC<{
   );
   const [toggleReply, setToggleReply] = useState<boolean>(false);
   const toggleHandler = () => {
-    setToggleReply((prevState) => (prevState = !toggleReply));
+    setToggleReply(!toggleReply);
   };
   const [formInput, setFormInput] = useState<string>("");
   const changeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

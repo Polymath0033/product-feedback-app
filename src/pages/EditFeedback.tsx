@@ -84,6 +84,7 @@ const EditFeedback: React.FC = () => {
     }
     return true;
   };
+  console.log(formIsValid);
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) {

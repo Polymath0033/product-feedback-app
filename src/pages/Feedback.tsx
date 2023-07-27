@@ -72,14 +72,13 @@ const Feedback: React.FC = () => {
               title={title}
               category={category}
               description={description}
-              id={id}
               upvotes={upvotes}
               comments={comments}
             />
           )
         )}
         <section>
-          {filter?.map(({ comments, id }, index) => (
+          {filter?.map(({ comments, id }) => (
             <>
               <h1 className={classes.h1} key={id}>
                 {comments?.length} comment

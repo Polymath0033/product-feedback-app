@@ -44,7 +44,6 @@ const Home: React.FC = () => {
                     upvotes={product.upvotes}
                     comments={product.comments}
                     key={product.id}
-                    id={product.id}
                   />
                 ))}
             </ul>

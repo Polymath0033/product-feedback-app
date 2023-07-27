@@ -10,8 +10,8 @@ const List: React.FC<{
   description: string;
   upvotes: number;
   comments?: Comment_[];
-  id: number | string;
-}> = ({ title, category, description, upvotes, comments, id }) => {
+  
+}> = ({ title, category, description, upvotes, comments}) => {
   return (
     <>
       <Link to={`/detail/${modifiedLink(title)}`} className={classes.li}>
