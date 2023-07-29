@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import ProductContext from "./product-context";
 const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [data, setData] = useState<ProductRequest[]>(product);
-  const [type, setType] = useState("");
+  const [type, setType] = useState("all");
   const [sort, setSort] = useState("");
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
